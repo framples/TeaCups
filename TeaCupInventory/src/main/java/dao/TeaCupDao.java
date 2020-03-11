@@ -13,6 +13,6 @@ import java.util.List;
  * @author keelybrennan
  */
 public interface TeaCupDao {
-    List<TeaCups> getAllTeaCups();
-    TeaCups getName(String name);
+    List<TeaCups> getAllTeaCups() throws TeaCupPersistenceException;
+    TeaCups getName(String name) throws TeaCupPersistenceException;
 }
