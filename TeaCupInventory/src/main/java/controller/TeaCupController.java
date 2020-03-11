@@ -5,10 +5,26 @@
  */
 package controller;
 
+import dao.TeaCupDao;
+import io.TeaCupView;
+
 /**
  *
  * @author keelybrennan
  */
 public class TeaCupController {
+    private TeaCupView view;
+    private TeaCupDao dao;
+    
+    public TeaCupController(TeaCupDao dao, TeaCupView view) {
+        this.dao = dao;
+        this.view = view;
+       
+    } 
+
+
+    
+    
+    
     
 }
