@@ -13,18 +13,56 @@ import io.TeaCupView;
  * @author keelybrennan
  */
 public class TeaCupController {
-    private TeaCupView view;
-    private TeaCupDao dao;
+        TeaCupView view;
+    TeaCupDao dao;
     
-    public TeaCupController(TeaCupDao dao, TeaCupView view) {
-        this.dao = dao;
-        this.view = view;
-       
-    } 
-
+   public TeaCupController(TeaCupDao dao, TeaCupView view) {
+    this.dao = dao;
+    this.view = view;
+}
 
     
-    
-    
-    
+    public void run() {
+        boolean keepGoing = true;
+        int menuSelection = 0;
+        
+        try {
+        while (keepGoing) {
+            
+            try {
+            menuSelection = getMenuSelection();
+            } catch (NumberFormatException e) {
+                view.displayErrorMessage(e.getMessage());
+                continue;
+            }
+            switch (menuSelection) {
+                case 1:
+                    createTeaCup();
+                    break;
+                case 2: 
+                    getAllTeaCups();
+                    break;
+                case 3: 
+                    searchTeaCupName();
+                    break;
+                case 4: 
+                    removeTeaCup();
+                    break;
+                case 5: 
+                    editTeaCup();
+                    break;
+
+                case 6:
+                    keepGoing = false;
+                    break;
+                default:
+                    unknownCommand();
+            }
+            
+        }
+        exitMessage();
+    } catch (TeaCupPersistanceException e) {
+        view.displayErrorMessage(e.getMessage());
+    }
+ }
 }
