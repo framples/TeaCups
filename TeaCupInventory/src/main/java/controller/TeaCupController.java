@@ -4,6 +4,7 @@ import dao.TeaCupDao;
 import dao.TeaCupPersistenceException;
 import dto.TeaCups;
 import io.TeaCupView;
+import java.util.List;
 
 /**
  *
@@ -37,10 +38,10 @@ public class TeaCupController {
                     createTeaCup();
                         break;
                     case 2:
-//                    getAllTeaCups();
+                    getAllTeaCups();
                         break;
                     case 3:
-//                    searchTeaCupName();
+                    searchTeaCupName();
                         break;
                     case 4:
 //                    removeTeaCup();
@@ -64,22 +65,20 @@ public class TeaCupController {
         }
     }
     
- 
 
-
-    public void getAllTeaCups() throws TeaCupPersistanceException {
+    public void getAllTeaCups() {
         view.displayDisplayAllTeaCupsBanner();
-        List<teacup> teaCupList = dao.getAllTeaCups();
-        view.displayTeacupList(teaCupList);
+        List<TeaCups> teaCupList = dao.getAllTeaCups();
+        view.displayTeaCupList(teaCupList);
     }
     
-    private void searchTeaCupName() throws TeaCupPersistanceException {
+    private void searchTeaCupName(){
         view.displayDisplayTeaCupBanner();
         String name = view.getNameChoice();
-        Teacup teacup = dao.getTeacup(name);
-        view.displayTeaCup(Teacup);
+        TeaCups teacup = dao.getTeaCup(name);
+        view.displayTeaCup(teacup);
     }
-    
+
     private int getMenuSelection() {
         return view.printMenuAndGetSelection();
     }
@@ -96,7 +95,7 @@ public class TeaCupController {
     private void createTeaCup() {
         view.displayCreateTeaCupBanner();
         TeaCups newTeaCup = view.getNewTeaCupInfo();
-        dao.createTeaCup(newTeaCup);
+        dao.addTeaCup(newTeaCup.getName(), newTeaCup);
         view.displayCreateSuccessBanner();
     }
     

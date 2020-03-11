@@ -66,8 +66,20 @@ public class UserIOConsoleImpl implements UserIO {
 
     @Override
     public int readInt(String prompt) {
-        System.out.println(prompt);
-        return Integer.parseInt(sc.nextLine());
+        int userInput = 0;
+
+//  Validation of field entry. Prevents text entry which causes code to fail.
+        while (true) {
+            try {
+                System.out.println(prompt);
+                userInput = Integer.parseInt(sc.nextLine());
+                break;
+            } catch (Exception e) {
+                System.out.println("The value entered was not an integer. Please enter an integer.");
+                continue;
+            }
+        }
+        return userInput;
     }
 
     @Override
@@ -129,7 +141,7 @@ public class UserIOConsoleImpl implements UserIO {
                 System.out.println(prompt);
                 releaseDate = LocalDate.parse(sc.nextLine());
             } catch (Exception e) {
-                System.out.println("The value entered was not a date with the acceptable fromat. Please enter a date with the following format: YYYY-MM-DD. Example: 1974-12-03");
+                System.out.println("The value entered was not a date with the acceptable fromat. Please enter a date \nwith the following format: YYYY-MM-DD. Example: 1974-12-03");
                 continue;
             }
 
@@ -166,16 +178,15 @@ public class UserIOConsoleImpl implements UserIO {
             if (currency.compareTo(zeroComparison) > 0) {
                 break;
             } else {
-                System.out.println("\n===Money Entry Error===");
                 System.out.println("Entered value must be non-negative and non-zero.");
             }
         }
         return currency;
     }
-    
+
     @Override
     public void printf(String message) {
         System.out.printf(message);
     }
-    
+
 }

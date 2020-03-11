@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface TeaCupDao {
  
-    public void createTeaCup(TeaCups newTeaCup);
+    public TeaCups addTeaCup(String name, TeaCups newTeaCup);
     
     List<TeaCups> getAllTeaCups();
-    TeaCups getName(String name);
+    TeaCups getTeaCup(String name);
 
 }
