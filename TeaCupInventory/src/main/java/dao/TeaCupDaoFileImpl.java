@@ -6,6 +6,7 @@
 package dao;
 
 import dto.TeaCups;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -20,6 +21,10 @@ import java.util.Scanner;
  */
 public class TeaCupDaoFileImpl implements TeaCupDao {
     
+    public void createTeaCup(TeaCups newTeaCup) {
+        
+    }
+
     public static final String TEACUP_FILE = "teacupfile.txt";
     public static final String DELIMITER = "::";
     
@@ -68,5 +73,5 @@ public class TeaCupDaoFileImpl implements TeaCupDao {
         }
         scanner.close();
     }
-    
+
 }

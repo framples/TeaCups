@@ -6,6 +6,7 @@
 package controller;
 
 import dao.TeaCupDao;
+import dto.TeaCups;
 import io.TeaCupView;
 
 /**
@@ -37,7 +38,7 @@ public class TeaCupController {
                 }
                 switch (menuSelection) {
                     case 1:
-//                    createTeaCup();
+                    createTeaCup();
                         break;
                     case 2:
 //                    getAllTeaCups();
@@ -91,5 +92,12 @@ public class TeaCupController {
     private void exitMessage() {
         view.displayExitBanner();
 
+    }
+    
+    private void createTeaCup() {
+        view.displayCreateTeaCupBanner();
+        TeaCups newTeaCup = view.getNewTeaCupInfo();
+        dao.createTeaCup(newTeaCup);
+        view.displayCreateSuccessBanner();
     }
 }

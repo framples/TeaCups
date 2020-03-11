@@ -6,6 +6,8 @@
 package io;
 
 import dto.TeaCups;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -72,5 +74,27 @@ public class TeaCupView {
       io.print("=== ERROR ===");
       io.print("errorMsg");
 
+    }
+    
+    public void displayCreateTeaCupBanner() {
+        io.print("=== Create TeaCup ===");
+    }
+    
+    public TeaCups getNewTeaCupInfo() {
+        String name = io.readString("Please enter name of TeaCup");
+        int manufacturer = io.readInt("Please enter Manufacturer");
+        String color = io.readString("Please enter color");
+        BigDecimal price = io.readBigDecimal("Please enter price");
+        LocalDate timeAcquired = io.readDate("Please enter the time acquired");
+        TeaCups currentTeaCup = new TeaCups(name);
+        currentTeaCup.setManufacturer(manufacturer);
+        currentTeaCup.setColor(color);
+        currentTeaCup.setPrice(price);
+        currentTeaCup.setTimeAcquired(timeAcquired);
+        return currentTeaCup;
+    }
+    
+    public void displayCreateSuccessBanner() {
+        io.readString("TeaCup successfully created. Please hit enter to continue");
     }
 }
