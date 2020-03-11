@@ -5,10 +5,15 @@
  */
 package dao;
 
+import dto.TeaCups;
+
 /**
  *
  * @author keelybrennan
  */
 public class TeaCupDaoFileImpl implements TeaCupDao {
     
+    public void createTeaCup(TeaCups newTeaCup) {
+        
+    }
 }

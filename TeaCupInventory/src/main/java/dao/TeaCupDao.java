@@ -5,10 +5,14 @@
  */
 package dao;
 
+import dto.TeaCups;
+
 /**
  *
  * @author keelybrennan
  */
 public interface TeaCupDao {
+ 
+    public void createTeaCup(TeaCups newTeaCup);
     
 }
