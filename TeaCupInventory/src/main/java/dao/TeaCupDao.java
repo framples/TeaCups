@@ -5,10 +5,19 @@
  */
 package dao;
 
+import dto.TeaCups;
+
+import java.util.List;
+
 /**
  *
  * @author keelybrennan
  */
 public interface TeaCupDao {
+ 
+    public void createTeaCup(TeaCups newTeaCup);
     
+    List<TeaCups> getAllTeaCups();
+    TeaCups getName(String name);
+
 }

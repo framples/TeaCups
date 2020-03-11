@@ -1,10 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package controller;
 
+package controller;
 import dao.TeaCupDao;
 import dao.TeaCupPersistenceException;
 import dto.TeaCups;
@@ -15,60 +10,96 @@ import io.TeaCupView;
  * @author keelybrennan
  */
 public class TeaCupController {
+
     TeaCupView view;
     TeaCupDao dao;
-    
-   public TeaCupController(TeaCupDao dao, TeaCupView view) {
-    this.dao = dao;
-    this.view = view;
-}
 
-    
+    public TeaCupController(TeaCupDao dao, TeaCupView view) {
+        this.dao = dao;
+        this.view = view;
+    }
+
     public void run() {
         boolean keepGoing = true;
         int menuSelection = 0;
-        
-        try {
-        while (keepGoing) {
-            
-            try {
-            menuSelection = getMenuSelection();
-            } catch (NumberFormatException e) {
-                view.displayErrorMessage(e.getMessage());
-                continue;
-            }
-            switch (menuSelection) {
-                case 1:
-                    createTeaCup();
-                    break;
-                case 2: 
-                    getAllTeaCups();
-                    break;
-                case 3: 
-                    searchTeaCupName();
-                    break;
-                case 4: 
-                    removeTeaCup();
-                    break;
-                case 5: 
-                    editTeaCup();
-                    break;
 
-                case 6:
-                    keepGoing = false;
-                    break;
-                default:
-                    unknownCommand();
+        try {
+            while (keepGoing) {
+
+                try {
+                    menuSelection = getMenuSelection();
+                } catch (NumberFormatException e) {
+//                view.displayErrorMessage(e.getMessage());
+                    continue;
+                }
+                switch (menuSelection) {
+                    case 1:
+                    createTeaCup();
+                        break;
+                    case 2:
+//                    getAllTeaCups();
+                        break;
+                    case 3:
+//                    searchTeaCupName();
+                        break;
+                    case 4:
+//                    removeTeaCup();
+                        break;
+                    case 5:
+//                    editTeaCup();
+                        break;
+
+                    case 6:
+                        keepGoing = false;
+                        break;
+                    default:
+                        unknownCommand();
+                }
+
             }
+            exitMessage();
+        } catch (Exception e) {
+            view.displayErrorMessage(e.getMessage());
             
         }
-        exitMessage();
-    } catch (TeaCupPersistanceException e) {
-        view.displayErrorMessage(e.getMessage());
     }
     
- }
+ 
 
+
+    public void getAllTeaCups() throws TeaCupPersistanceException {
+        view.displayDisplayAllTeaCupsBanner();
+        List<teacup> teaCupList = dao.getAllTeaCups();
+        view.displayTeacupList(teaCupList);
+    }
+    
+    private void searchTeaCupName() throws TeaCupPersistanceException {
+        view.displayDisplayTeaCupBanner();
+        String name = view.getNameChoice();
+        Teacup teacup = dao.getTeacup(name);
+        view.displayTeaCup(Teacup);
+    }
+    
+    private int getMenuSelection() {
+        return view.printMenuAndGetSelection();
+    }
+
+    private void unknownCommand() {
+//        view.displayUnknownCommandBanner();
+    }
+
+    private void exitMessage() {
+        view.displayExitBanner();
+
+    }
+    
+    private void createTeaCup() {
+        view.displayCreateTeaCupBanner();
+        TeaCups newTeaCup = view.getNewTeaCupInfo();
+        dao.createTeaCup(newTeaCup);
+        view.displayCreateSuccessBanner();
+    }
+    
     
     
 //==CASE 4: REMOVE TEACUP   
@@ -123,7 +154,5 @@ public class TeaCupController {
             System.out.println("error");
         }
     }
-
-
 
 }
