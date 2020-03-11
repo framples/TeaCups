@@ -26,17 +26,23 @@ import java.util.Scanner;
  * @author keelybrennan
  */
 public class TeaCupDaoFileImpl implements TeaCupDao {
-    
+
     public static final String TEACUP_FILE = "teacupfile.txt";
     public static final String DELIMITER = "::";
     
     private Map<String, TeaCups> teacups = new HashMap<>();
     
     @Override
+
     public List<TeaCups> getAllTeaCups() throws TeaCupPersistenceException {
         loadTeaCups();
         return new ArrayList<TeaCups>(teacups.values());
     }
+    public TeaCups addTeaCup(String name, TeaCups newTeaCup) {
+        TeaCups teaCup = teacups.put(name, newTeaCup);
+        return teaCup;
+    }
+    
     
     @Override
     public TeaCups getName(String name) throws TeaCupPersistenceException{
@@ -44,11 +50,27 @@ public class TeaCupDaoFileImpl implements TeaCupDao {
         return teacups.get(name);
     }
 
+    public TeaCups getTeaCup(String name) {
+       //loadTeaCups();
+       return teacups.get(name);
+    }
+    
+    //use case 
+    //public TeaCups removeTeaCup(String name) throws DvdCollectionDaoException {
+    public TeaCups removeTeaCup(String name){
+    TeaCups teacups = teacups.remove(name);
+       // writeTeaCups();
+        return teacups;
+    }
+    
+    
+    
     ////////////////////LOAD TEACUP ///////////////////
     private void loadTeaCups() throws TeaCupPersistenceException {
         Scanner scanner;
         
         try {
+
             scanner = new Scanner(new BufferedReader(new FileReader(TEACUP_FILE)));
         } catch (FileNotFoundException e) {
             throw new TeaCupPersistenceException("Could not load teacups into memory.", e);
@@ -80,7 +102,7 @@ public class TeaCupDaoFileImpl implements TeaCupDao {
                             ));
             
             teacups.put(currentTeaCups.getName(), currentTeaCups);
-            // not sure how to do this with ints/bigdecimals so need to look into it. 
+            
         }
         scanner.close();
     }
@@ -112,4 +134,5 @@ public class TeaCupDaoFileImpl implements TeaCupDao {
         out.close();
     }
     
+
 }

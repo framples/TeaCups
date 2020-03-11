@@ -6,6 +6,7 @@
 package dao;
 
 import dto.TeaCups;
+
 import java.util.List;
 
 /**
@@ -15,4 +16,9 @@ import java.util.List;
 public interface TeaCupDao {
     List<TeaCups> getAllTeaCups() throws TeaCupPersistenceException;
     TeaCups getName(String name) throws TeaCupPersistenceException;
+ 
+    public TeaCups addTeaCup(String name, TeaCups newTeaCup);
+  
+    TeaCups getTeaCup(String name);
+
 }
