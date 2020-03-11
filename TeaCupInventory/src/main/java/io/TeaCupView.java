@@ -27,4 +27,17 @@ public class TeaCupView {
 
         return io.readInt("Please select from the above choices.", 1, 6);
     }
+    
+        public void displayExitBanner() {
+        io.print("Good Bye!!!");
+    }
+    
+    public void displayUnknownCommandBanner() {
+        io.print("Unknown command!!!");
+    }
+    
+    public void displayErrorMessage(String errorMsg) {
+      io.print("=== ERROR ===");
+      io.print("errorMsg");
+    }
 }
