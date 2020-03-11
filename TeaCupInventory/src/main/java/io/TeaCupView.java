@@ -8,6 +8,7 @@ package io;
 import dto.TeaCups;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -32,6 +33,35 @@ public class TeaCupView {
         return io.readInt("Please select from the above choices.", 1, 6);
     }
     
+
+    public String getNameChoice() {
+        return io.readString("Please enter the name of the Tea Cup you would like to find.");
+    }
+    
+    public void displayTeaCupList(List<TeaCups> teaCupList) {
+        for (TeaCups currentTeaCup : teaCupList) {
+            io.print(currentTeaCup.getName() + " "
+                    + currentTeaCup.getColor() + " "
+                    + currentTeaCup.getManufacturer() + " "
+                    + currentTeaCup.getPrice() + " "
+                    + currentTeaCup.getTimeAcquired());
+        }
+        io.readString("Hit enter to continue.");
+    }
+    
+    public void displayDisplayAllTeaCupsBanner() {
+        io.print("=== Display Tea Cup");
+    }
+    
+    public void displayTeaCup(TeaCups teacup) {
+        if (teacup != null) {
+            io.print("Name: " + teacup.getName());
+            io.print("Color: " + teacup.getColor());
+            io.print("Manufacturer: " + teacup.getManufacturer());
+            io.print("Price: " + teacup.getPrice());
+            io.print("Time Acquired: " + teacup.getTimeAcquired());
+        }
+
         public void displayExitBanner() {
         io.print("Good Bye!!!");
     }
@@ -43,6 +73,7 @@ public class TeaCupView {
     public void displayErrorMessage(String errorMsg) {
       io.print("=== ERROR ===");
       io.print("errorMsg");
+
     }
     
     public void displayCreateTeaCupBanner() {
