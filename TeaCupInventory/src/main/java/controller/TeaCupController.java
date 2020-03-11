@@ -66,6 +66,19 @@ public class TeaCupController {
             
         }
     }
+ }
+    
+    public void getAllTeaCups() throws TeaCupPersistanceException {
+        view.displayDisplayAllTeaCupsBanner();
+        List<teacup> teaCupList = dao.getAllTeaCups();
+        view.displayTeacupList(teaCupList);
+    }
+    
+    private void searchTeaCupName() throws TeaCupPersistanceException {
+        view.displayDisplayTeaCupBanner();
+        String name = view.getNameChoice();
+        Teacup teacup = dao.getTeacup(name);
+        view.displayTeaCup(Teacup);
 
     private int getMenuSelection() {
         return view.printMenuAndGetSelection();
@@ -77,5 +90,6 @@ public class TeaCupController {
 
     private void exitMessage() {
         view.displayExitBanner();
+
     }
 }
