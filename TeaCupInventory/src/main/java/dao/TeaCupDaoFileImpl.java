@@ -20,10 +20,6 @@ import java.util.Scanner;
  * @author keelybrennan
  */
 public class TeaCupDaoFileImpl implements TeaCupDao {
-    
-    public void createTeaCup(TeaCups newTeaCup) {
-        
-    }
 
     public static final String TEACUP_FILE = "teacupfile.txt";
     public static final String DELIMITER = "::";
@@ -31,13 +27,19 @@ public class TeaCupDaoFileImpl implements TeaCupDao {
     private Map<String, TeaCups> teacups = new HashMap<>();
 
     @Override
+    public TeaCups addTeaCup(String name, TeaCups newTeaCup) {
+        TeaCups teaCup = teacups.put(name, newTeaCup);
+        return teaCup;
+    }
+    
+    @Override
     public List<TeaCups> getAllTeaCups() {
         //loadTeaCups();
         return new ArrayList<TeaCups>(teacups.values());
     }
 
     @Override
-    public TeaCups getName(String name) {
+    public TeaCups getTeaCup(String name) {
        //loadTeaCups();
        return teacups.get(name);
     }
