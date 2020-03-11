@@ -18,7 +18,11 @@ public class TeaCups {
     private String color;
     private BigDecimal price;
     private LocalDate timeAcquired;
-
+    
+   public TeaCups(String name) {
+        this.name =  name;
+    }
+      
     public int getManufacturer() {
         return manufacturer;
     }
@@ -58,6 +62,5 @@ public class TeaCups {
     public void setTimeAcquired(LocalDate timeAcquired) {
         this.timeAcquired = timeAcquired;
     }
-
 
 }
