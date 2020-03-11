@@ -5,12 +5,15 @@
  */
 package io;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 /**
  *
  * @author keelybrennan
  */
 public interface UserIO {
-    void print(String msg);
+    void print(String message);
 
     double readDouble(String prompt);
 
@@ -29,4 +32,12 @@ public interface UserIO {
     long readLong(String prompt, long min, long max);
 
     String readString(String prompt);
+
+    LocalDate readDate(String prompt);
+    
+    BigDecimal readBigDecimal(String string);
+    
+    BigDecimal readCurrency(String string);
+    
+    void printf(String Message);
 }
