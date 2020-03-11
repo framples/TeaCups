@@ -65,4 +65,17 @@ public class TeaCupController {
         view.displayErrorMessage(e.getMessage());
     }
  }
+    
+    public void getAllTeaCups() throws TeaCupPersistanceException {
+        view.displayDisplayAllTeaCupsBanner();
+        List<teacup> teaCupList = dao.getAllTeaCups();
+        view.displayTeacupList(teaCupList);
+    }
+    
+    private void searchTeaCupName() throws TeaCupPersistanceException {
+        view.displayDisplayTeaCupBanner();
+        String name = view.getNameChoice();
+        Teacup teacup = dao.getTeacup(name);
+        view.displayTeaCup(Teacup);
+    }
 }
