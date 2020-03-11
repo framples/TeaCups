@@ -31,6 +31,7 @@ public class TeaCupView {
         return io.readInt("Please select from the above choices.", 1, 6);
     }
     
+
     public String getNameChoice() {
         return io.readString("Please enter the name of the Tea Cup you would like to find.");
     }
@@ -58,5 +59,18 @@ public class TeaCupView {
             io.print("Price: " + teacup.getPrice());
             io.print("Time Acquired: " + teacup.getTimeAcquired());
         }
+
+        public void displayExitBanner() {
+        io.print("Good Bye!!!");
+    }
+    
+    public void displayUnknownCommandBanner() {
+        io.print("Unknown command!!!");
+    }
+    
+    public void displayErrorMessage(String errorMsg) {
+      io.print("=== ERROR ===");
+      io.print("errorMsg");
+
     }
 }
