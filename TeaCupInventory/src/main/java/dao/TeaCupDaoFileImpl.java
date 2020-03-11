@@ -42,6 +42,17 @@ public class TeaCupDaoFileImpl implements TeaCupDao {
        return teacups.get(name);
     }
     
+    //use case 
+    //public TeaCups removeTeaCup(String name) throws DvdCollectionDaoException {
+    public TeaCups removeTeaCup(String name){
+    TeaCups teacups = teacups.remove(name);
+       // writeTeaCups();
+        return teacups;
+    }
+    
+    
+    
+    
     
     ////////////////////LOAD TEACUP ///////////////////
     
@@ -51,7 +62,7 @@ public class TeaCupDaoFileImpl implements TeaCupDao {
         try {
             scanner = new Scanner(new Bufferedreader(new FileReader(TEACUP_FILE)));
         }catch (FileNotFoundException e) {
-            throw new TeaCupPersistanceException("Could not load teacups into memory.", e);
+            throw new TeaCupPersistenceException("Could not load teacups into memory.", e);
         }
         
         String currentLine;
@@ -73,5 +84,6 @@ public class TeaCupDaoFileImpl implements TeaCupDao {
         }
         scanner.close();
     }
+    
 
 }

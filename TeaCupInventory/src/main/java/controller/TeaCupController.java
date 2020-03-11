@@ -106,7 +106,7 @@ public class TeaCupController {
     //private void removeTeaCup() throws TeaCupPersistenceException {
     private void removeTeaCup(){
         view.displayRemoveBanner(); //write in view 
-        String name = view.getName(); //write in view 
+        String name = view.getNameChoice(); //write in view 
         //dao.removeTeaCup(name);// write in dao
         view.displayRemoveSuccessBanner(); //write in view 
     }
@@ -114,7 +114,7 @@ public class TeaCupController {
 //==CASE 5: EDIT TEACUP 
 //private void editTeaCup() throws TeaCupPersistenceException {
     private void editTeaCup() {
-        String name = view.getName();
+        String name = view.getNameChoice();
         TeaCups teaCup = dao.getTeaCup(name);
         
         boolean keepGoing = true;
@@ -124,7 +124,7 @@ public class TeaCupController {
         
             switch(choice){
                 case 1: 
-                    teaCup.setName(view.getName());
+                    teaCup.setName(view.getNameChoice());
                     break;
                 case 2: 
                     teaCup.setColor(view.getColor());

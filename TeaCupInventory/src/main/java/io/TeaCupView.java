@@ -60,7 +60,8 @@ public class TeaCupView {
             io.print("Price: " + teacup.getPrice());
             io.print("Time Acquired: " + teacup.getTimeAcquired());
         }
-
+    }
+    
     public void displayExitBanner() {
         io.print("Good Bye!!!");
     }
@@ -126,13 +127,13 @@ public class TeaCupView {
         return io.readInt("Select An Option: ");
     }
     
-    public String getName() {
-        String input = io.readString("Enter name: ");
-//        if (input.isEmpty()) {
-//            input = "- No Data -";
-//        }
-        return input;
-    }
+//    public String getName() {
+//        String input = io.readString("Enter name: ");
+////        if (input.isEmpty()) {
+////            input = "- No Data -";
+////        }
+//        return input;
+//    }
     
     public String getColor() {
         String input = io.readString("Enter color: ");
