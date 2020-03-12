@@ -31,6 +31,8 @@ public interface UserIO {
 
     long readLong(String prompt, long min, long max);
 
+    String readInString(String prompt);
+    
     String readString(String prompt);
 
     LocalDate readDate(String prompt);

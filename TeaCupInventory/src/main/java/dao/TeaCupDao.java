@@ -26,4 +26,6 @@ public interface TeaCupDao {
     public void writeTeaCups() throws TeaCupPersistenceException;
     
     public TeaCups removeTeaCup(String name);
+    
+    public void writeManufacturers() throws TeaCupPersistenceException;
 }
