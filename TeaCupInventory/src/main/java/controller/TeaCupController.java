@@ -112,7 +112,7 @@ public class TeaCupController {
     private void removeTeaCup(){
         view.displayRemoveBanner(); //write in view 
         String name = view.getNameChoice(); //write in view 
-        //dao.removeTeaCup(name);// write in dao
+        dao.removeTeaCup(name);
         view.displayRemoveSuccessBanner(); //write in view 
     }
     
