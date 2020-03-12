@@ -16,6 +16,18 @@ public class TeaCups {
         this.name =  name;
     }
 
+    @Override
+    public String toString() {
+        String str = this.getName() + " "
+                    + this.getColor() + " "
+                    + this.getManufacturer() + " "
+                    + this.getPrice() + " "
+                    + this.getTimeAcquired();
+        return str;
+    }
+    
+    
+
     public int getManufacturer() {
         return manufacturer;
     }

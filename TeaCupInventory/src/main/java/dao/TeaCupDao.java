@@ -14,10 +14,11 @@ import java.util.List;
  * @author keelybrennan
  */
 public interface TeaCupDao {
+    List<TeaCups> getAllTeaCups() throws TeaCupPersistenceException;
+    TeaCups getName(String name) throws TeaCupPersistenceException;
  
     public TeaCups addTeaCup(String name, TeaCups newTeaCup);
-    
-    List<TeaCups> getAllTeaCups();
+  
     TeaCups getTeaCup(String name);
 
 }

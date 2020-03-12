@@ -47,8 +47,21 @@ public class TeaCupView {
         }
         io.readString("Hit enter to continue.");
     }
-
+    /// these two do the same thing!
+    public <T> void displayObjectList(List<T> list){
+    
+        for (T t : list) {
+            io.print("" + t);
+        }
+        io.readString("Hit enter to continue.");
+    }
+    
+    
     public void displayDisplayAllTeaCupsBanner() {
+        io.print("=== Display Tea Cups");
+    }
+    
+    public void displayDisplayTeaCupBanner() {
         io.print("=== Display Tea Cup ===");
     }
 
@@ -61,11 +74,12 @@ public class TeaCupView {
             io.print("Time Acquired: " + teacup.getTimeAcquired());
         }
     }
-
-    public void displayExitBanner() {
+       
+    
+     public void displayExitBanner() {
         io.print("Good Bye!!!");
-    }
-
+     }
+     
     public void displayUnknownCommandBanner() {
         io.print("Unknown command!!!");
     }
@@ -98,10 +112,6 @@ public class TeaCupView {
         io.readString("TeaCup successfully created. Please hit enter to continue");
     }
 
-    public void displayDisplayTeaCupBanner() {
-        io.print("=== Display TeaCup ===");
-
-    }  
         
 //==CASE 4: REMOVE TEACUP    
     public void displayRemoveBanner() {

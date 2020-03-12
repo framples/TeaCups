@@ -9,6 +9,6 @@ package dao;
  *
  * @author keelybrennan
  */
-public class TeaCupPersistenceException {
+public class TeaCupPersistenceException extends Exception {
     
 }

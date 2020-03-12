@@ -1,10 +1,12 @@
 
 package controller;
-import dao.TeaCupDao;
-import dao.TeaCupPersistenceException;
+
 import dto.TeaCups;
 import io.TeaCupView;
 import java.util.List;
+import dao.TeaCupDao;
+import dao.TeaCupPersistenceException;
+
 
 /**
  *
@@ -30,7 +32,7 @@ public class TeaCupController {
                 try {
                     menuSelection = getMenuSelection();
                 } catch (NumberFormatException e) {
-//                view.displayErrorMessage(e.getMessage());
+             view.displayErrorMessage(e.getMessage());
                     continue;
                 }
                 switch (menuSelection) {
@@ -44,10 +46,10 @@ public class TeaCupController {
                     searchTeaCupName();
                         break;
                     case 4:
-//                    removeTeaCup();
+      //           removeTeaCup();
                         break;
                     case 5:
-//                    editTeaCup();
+       //           editTeaCup();
                         break;
 
                     case 6:
@@ -64,18 +66,26 @@ public class TeaCupController {
             
         }
     }
-    
 
-    public void getAllTeaCups() {
+    private void unknownCommand() {
+    }
+
+    private void exitMessage() {
+        view.displayExitBanner();
+    }
+
+    
+    public void getAllTeaCups() throws TeaCupPersistenceException {
         view.displayDisplayAllTeaCupsBanner();
         List<TeaCups> teaCupList = dao.getAllTeaCups();
         view.displayTeaCupList(teaCupList);
     }
     
-    private void searchTeaCupName(){
+    private void searchTeaCupName() throws TeaCupPersistenceException {
         view.displayDisplayTeaCupBanner();
         String name = view.getNameChoice();
-        TeaCups teacup = dao.getTeaCup(name);
+        TeaCups teacup = dao.getName(name);
+
         view.displayTeaCup(teacup);
     }
 
