@@ -10,5 +10,13 @@ package dao;
  * @author keelybrennan
  */
 public class TeaCupPersistenceException extends Exception {
+        public TeaCupPersistenceException(String message) {
+        super(message);
+    }
     
+    public TeaCupPersistenceException(String message, Throwable cause) {
+        super(message, cause);
+    }
+    
+
 }
