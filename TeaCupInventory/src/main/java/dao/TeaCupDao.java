@@ -20,5 +20,8 @@ public interface TeaCupDao {
     public TeaCups addTeaCup(String name, TeaCups newTeaCup);
   
     TeaCups getTeaCup(String name);
-
+    
+    public void loadTeaCups() throws TeaCupPersistenceException;
+    
+    public void writeTeaCups() throws TeaCupPersistenceException;
 }

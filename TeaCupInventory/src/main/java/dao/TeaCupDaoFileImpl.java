@@ -35,7 +35,7 @@ public class TeaCupDaoFileImpl implements TeaCupDao {
     @Override
 
     public List<TeaCups> getAllTeaCups() throws TeaCupPersistenceException {
-        loadTeaCups();
+        //loadTeaCups();
         return new ArrayList<TeaCups>(teacups.values());
     }
     public TeaCups addTeaCup(String name, TeaCups newTeaCup) {
@@ -46,7 +46,7 @@ public class TeaCupDaoFileImpl implements TeaCupDao {
     
     @Override
     public TeaCups getName(String name) throws TeaCupPersistenceException{
-        loadTeaCups();
+        //loadTeaCups();
         return teacups.get(name);
     }
 
@@ -56,17 +56,17 @@ public class TeaCupDaoFileImpl implements TeaCupDao {
     }
     
     //use case 
-    //public TeaCups removeTeaCup(String name) throws DvdCollectionDaoException {
     public TeaCups removeTeaCup(String name){
-    TeaCups teacups = teacups.remove(name);
-       // writeTeaCups();
-        return teacups;
+    TeaCups removedTeacups = teacups.remove(name);
+        //writeTeaCups() ;
+        return removedTeacups;
     }
     
     
     
     ////////////////////LOAD TEACUP ///////////////////
-    private void loadTeaCups() throws TeaCupPersistenceException {
+    @Override
+    public void loadTeaCups() throws TeaCupPersistenceException {
         Scanner scanner;
         
         try {
@@ -107,7 +107,8 @@ public class TeaCupDaoFileImpl implements TeaCupDao {
         scanner.close();
     }
     
-    private void writeTeaCups() throws TeaCupPersistenceException {
+    @Override
+    public void writeTeaCups() throws TeaCupPersistenceException {
         PrintWriter out;
         
         try {

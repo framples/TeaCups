@@ -46,15 +46,19 @@ public class TeaCupController {
                     searchTeaCupName();
                         break;
                     case 4:
-      //           removeTeaCup();
+                    removeTeaCup();
                         break;
                     case 5:
-       //           editTeaCup();
+                    editTeaCup();
                         break;
 
                     case 6:
                         keepGoing = false;
                         break;
+                    case 7:
+                    loadTeaCup();
+                        break;
+
                     default:
                         unknownCommand();
                 }
@@ -70,8 +74,9 @@ public class TeaCupController {
     private void unknownCommand() {
     }
 
-    private void exitMessage() {
+    private void exitMessage() throws TeaCupPersistenceException {
         view.displayExitBanner();
+        dao.writeTeaCups();
     }
 
     
@@ -93,15 +98,6 @@ public class TeaCupController {
         return view.printMenuAndGetSelection();
     }
 
-    private void unknownCommand() {
-//        view.displayUnknownCommandBanner();
-    }
-
-    private void exitMessage() {
-        view.displayExitBanner();
-
-    }
-    
     private void createTeaCup() {
         view.displayCreateTeaCupBanner();
         TeaCups newTeaCup = view.getNewTeaCupInfo();
@@ -162,6 +158,11 @@ public class TeaCupController {
            // view.displayMissingTeaCupError();
             System.out.println("error");
         }
+        
+    }
+        private void loadTeaCup() throws TeaCupPersistenceException {
+          dao.loadTeaCups();
+          
+        }
     }
 
-}
