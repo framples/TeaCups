@@ -28,8 +28,9 @@ public class TeaCupView {
         io.print("4. Remove a Tea Cup");
         io.print("5. Edit Tea Cup");
         io.print("6. Exit");
+        io.print("7. Load Tea Cups");
 
-        return io.readInt("Please select from the above choices.", 1, 6);
+        return io.readInt("Please select from the above choices.", 1, 7);
     }
 
 
