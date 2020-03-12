@@ -40,11 +40,11 @@ public class TeaCupView {
 
     public void displayTeaCupList(List<TeaCups> teaCupList) {
         for (TeaCups currentTeaCup : teaCupList) {
-            io.print(currentTeaCup.getName() + " "
-                    + currentTeaCup.getColor() + " "
-                    + currentTeaCup.getManufacturer() + " "
-                    + currentTeaCup.getPrice() + " "
-                    + currentTeaCup.getTimeAcquired());
+            io.print("\nName: " + currentTeaCup.getName());
+            io.print("Color: "+ currentTeaCup.getColor());
+            io.print("Manufacturer: " + currentTeaCup.getManufacturer());
+            io.print("Price: " + currentTeaCup.getPrice());
+            io.print("Time Acquired: "+ currentTeaCup.getTimeAcquired());
         }
         io.readString("Hit enter to continue.");
     }
@@ -96,8 +96,8 @@ public class TeaCupView {
     }
 
     public TeaCups getNewTeaCupInfo() {
-        String name = io.readString("Please enter name of TeaCup");
-        int manufacturer = io.readInt("Please enter Manufacturer number");
+        String name = io.readInString("Please enter name of TeaCup");
+        int manufacturer = io.readInt("Please enter manufacturer number");
         String color = io.readString("Please enter color");
         BigDecimal price = io.readCurrency("Please enter price");
         LocalDate timeAcquired = io.readDate("Please enter the time acquired (YYYY-MM-DD)");

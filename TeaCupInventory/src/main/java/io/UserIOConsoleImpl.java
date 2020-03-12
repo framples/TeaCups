@@ -73,10 +73,15 @@ public class UserIOConsoleImpl implements UserIO {
             try {
                 System.out.println(prompt);
                 userInput = Integer.parseInt(sc.nextLine());
-                break;
             } catch (Exception e) {
                 System.out.println("The value entered was not an integer. Please enter an integer.");
                 continue;
+            }
+            
+            if (userInput >= 0) {
+                break;
+            } else {
+                System.out.println("Please enter a positive integer for the manufacturer number.");
             }
         }
         return userInput;
@@ -125,6 +130,32 @@ public class UserIOConsoleImpl implements UserIO {
         return userInput;
     }
 
+    @Override
+    public String readInString(String prompt) {
+//        System.out.println(prompt);
+//        return sc.nextLine();
+        String userInput;
+
+        while (true) {
+
+            try {
+                System.out.println(prompt);
+                userInput = sc.nextLine();
+            } catch (Exception e) {
+                System.out.println("");
+                continue;
+            }
+
+            if (!userInput.isBlank()) {
+                break;
+            } else {
+                System.out.println("A TeaCup name cannot be blank. Please enter a string as a name.");
+            }
+        }
+
+        return userInput;
+    }
+    
     @Override
     public String readString(String prompt) {
         System.out.println(prompt);

@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -28,6 +29,7 @@ import java.util.Scanner;
 public class TeaCupDaoFileImpl implements TeaCupDao {
 
     public static final String TEACUP_FILE = "teacupfile.txt";
+    public static final String MANUFACTURER_FILE = "manufacturer.txt";
     public static final String DELIMITER = "::";
     
     private Map<String, TeaCups> teacups = new HashMap<>();
@@ -132,6 +134,31 @@ public class TeaCupDaoFileImpl implements TeaCupDao {
             out.flush();
         }
 //        for (TeaCups currentTeaCup : teaCupsList)
+        
+        out.close();
+    }
+    
+    @Override
+    public void writeManufacturers() throws TeaCupPersistenceException {
+        PrintWriter out;
+        
+        try {
+            out = new PrintWriter(new FileWriter(MANUFACTURER_FILE));
+        } catch (IOException e) {
+            String errMsg = "Could not create file: " + e.getMessage();
+            throw new TeaCupPersistenceException(errMsg, e);
+        }
+        
+        List<TeaCups> teaCupsList = this.getAllTeaCups();
+        List<Integer> uniqueManufacturers = teaCupsList.stream()
+                .map(s -> s.getManufacturer())
+                .distinct()
+                .collect(Collectors.toList());
+        
+        for (Integer manufacturers : uniqueManufacturers) {
+            out.println(manufacturers);
+            out.flush();
+        }
         
         out.close();
     }

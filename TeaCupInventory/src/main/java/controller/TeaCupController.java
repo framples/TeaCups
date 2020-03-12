@@ -77,6 +77,7 @@ public class TeaCupController {
     private void exitMessage() throws TeaCupPersistenceException {
         view.displayExitBanner();
         dao.writeTeaCups();
+        dao.writeManufacturers();
     }
 
     
